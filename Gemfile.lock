@@ -13,7 +13,6 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    ParseModel (0.0.6)
     actionmailer (4.1.4)
       actionpack (= 4.1.4)
       actionview (= 4.1.4)
@@ -166,7 +165,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ParseModel
   active_model_serializers
   bcrypt
   browser-timezone-rails

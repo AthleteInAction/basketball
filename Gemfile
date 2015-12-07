@@ -66,7 +66,7 @@ end
 # gem 'parse-ruby-client', git: 'https://github.com/adelevie/parse-ruby-client.git'
 # gem 'parse_resource','~> 1.8.0'
 # gem 'nestful'
-gem 'ParseModel'
+# gem 'ParseModel'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'cloudinary'
