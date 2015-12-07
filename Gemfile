@@ -58,7 +58,11 @@ group :production,:staging do
 end
 
 # gem 'mysql2'
-gem 'sqlite3'
+group :development do
+
+	gem 'sqlite3'
+
+end
 # gem 'parse-ruby-client', git: 'https://github.com/adelevie/parse-ruby-client.git'
 # gem 'parse_resource','~> 1.8.0'
 # gem 'nestful'
