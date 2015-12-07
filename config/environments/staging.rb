@@ -9,10 +9,6 @@ Rails.application.configure do
 	config.active_support.deprecation = :stderr
 	config.assets.raise_runtime_errors = true
 
-  config.action_dispatch.default_headers = {
-      'X-Frame-Options' => 'ALLOWALL'
-  }
-
   # URI
   SITE_URI = 'https://obscure-meadow-8478.herokuapp.com'
   
