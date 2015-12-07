@@ -1,0 +1,224 @@
+$('document').ready(function(){
+
+	var i = 0;
+	$('.alert:not(.forever)').each(function(){
+
+		var e = this;
+
+		setTimeout(function(){
+
+			$(e).slideUp();
+
+		},3000);//(3000+(i*600)));
+
+		i++;
+
+	});
+
+});
+
+var JP = function(data){
+
+	<% if !E.production? %>
+		console.log(data);
+	<% end %>
+
+};
+
+var emailValidate = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+var pop = function(url,width,height){
+
+	var w = window.innerWidth;
+	var h = window.innerHeight;
+
+	var l = ((w/2)-(width/2))+window.screenX;
+	var t = ((h/2)-(height/2))+window.screenY;
+	t = (window.screen.height/2)-(height/2);
+
+	window.open(url,'_blank','height='+height+',width='+width+',left='+l+',top='+t);
+
+	return false;
+
+};
+
+function setCookie(cname,cvalue,exdays){
+
+	var d = new Date();
+	d.setTime(d.getTime()+(exdays*24*60*60*1000));
+	var expires = "expires="+d.toGMTString();
+	document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function getCookie(cname){
+
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++){
+
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	}
+
+	return '';
+
+}
+Array.prototype.removeWhere = function(key,val){
+
+    for (i = 0; i < this.length; i++) {
+    	if (this[i][key] == val){
+
+    		this.splice(i,1);
+
+    	}
+    }
+
+}
+Array.prototype.where = function(key,val){
+
+    for (i = 0; i < this.length; i++) {
+    	if (this[i][key] == val){
+
+    		return this[i];
+
+    	}
+    }
+
+    return false;
+
+}
+Array.prototype.contains = function(key,val){
+	
+	var has = false;
+
+    for (i = 0; i < this.length; i++) {
+    	if (this[i][key] == val){
+    		has = true;
+    		break;
+    	}
+    }
+
+    return has;
+}
+Array.prototype.times = function(n){
+
+	var tmp = [];
+
+    for (i = 0; i < n; i++) {
+    	tmp.push(i);
+    }
+
+    return tmp;
+}
+
+Array.prototype.total = function(a,b){
+
+	var array = this.slice(a);
+	if (b){array = this.slice(a,b);}
+
+	var n = 0;
+
+	for (i = 0; i < array.length; i++) {
+    	
+    	if (array[i]){
+    		n += parseInt(array[i]);
+    	}
+
+    }
+
+    return n;
+
+}
+
+var months = [
+	{
+		number: 0,
+		short: 'Jan',
+		long: 'January'
+	},
+	{
+		number: 1,
+		short: 'Feb',
+		long: 'Febuary'
+	},
+	{
+		number: 2,
+		short: 'Mar',
+		long: 'March'
+	},
+	{
+		number: 3,
+		short: 'Apr',
+		long: 'April'
+	},
+	{
+		number: 4,
+		short: 'May',
+		long: 'May'
+	},
+	{
+		number: 5,
+		short: 'Jun',
+		long: 'June'
+	},
+	{
+		number: 6,
+		short: 'Jul',
+		long: 'July'
+	},
+	{
+		number: 7,
+		short: 'Aug',
+		long: 'August'
+	},
+	{
+		number: 8,
+		short: 'Sept',
+		long: 'September'
+	},
+	{
+		number: 9,
+		short: 'Oct',
+		long: 'October'
+	},
+	{
+		number: 10,
+		short: 'Nov',
+		long: 'November'
+	},
+	{
+		number: 11,
+		short: 'Dec',
+		long: 'December'
+	}
+];
+var days = [
+	{
+		short: 'Sun',
+		long: 'Sunday'
+	},
+	{
+		short: 'Mon',
+		long: 'Monday'
+	},
+	{
+		short: 'Tues',
+		long: 'Tuesday'
+	},
+	{
+		short: 'Wed',
+		long: 'Wednesday'
+	},
+	{
+		short: 'Thurs',
+		long: 'Thursday'
+	},
+	{
+		short: 'Fri',
+		long: 'Friday'
+	},
+	{
+		short: 'Sat',
+		long: 'Saturday'
+	}
+];

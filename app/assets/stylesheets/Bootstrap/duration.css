@@ -1,0 +1,17 @@
+div.duration {
+ 	display: inline-block;
+}
+input[type="text"].duration {
+	width: 36px;
+	text-align: center;
+	/*border: none;*/
+	background: none;
+	padding: 0;
+	margin: 0;
+}
+input[type="text"].duration:focus {
+	background: #FFCC00;
+}
+input:focus {
+	outline: 0;
+}

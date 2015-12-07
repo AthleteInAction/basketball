@@ -1,0 +1,34 @@
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// SPLASH !!!!!!! SPLASH !!!!!!! SPLASH !!!!!!! SPLASH !!!!!!! SPLASH !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+App.controller('Ctrl',['$scope','API',
+	function($scope,API){
+
+		Parse.initialize("9nA9rm59xKqjCNfT4LCPgJMexuDdVKP6vxbVIm3F", "Y81xi2DbP0ut8QGvcTSj6Oea5eYVS5VvbjKcytEn");
+
+		var scope = $scope;
+
+		scope.timezone = jstz.determine();
+
+		scope.loaded = true;
+
+		scope.date = new Date();
+
+		JP('CTRL');
+
+		scope.API = API;
+
+		scope.moment = function(string,format){
+			return moment.tz(string,scope.timezone.name());
+		};
+
+		scope.zone = function(t){
+			return zone(t);
+		};
+
+		scope.times = function(n){
+			return new Array(parseInt(n));
+		};
+
+	}
+]);

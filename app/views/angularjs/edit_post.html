@@ -1,0 +1,131 @@
+<div class="list-group">
+
+	<div class="list-group-item">
+
+		<input type="text" class="form-control" placeholder="Youtube url..." ng:model="url" ng:change="urlCHG()" ng:show="!post.resource.key" select />
+
+		<div class="input-group" ng:show="post.resource.key">
+
+			<input type="text" class="form-control" placeholder="Youtube, GIF, Vimeo..." ng:model="url" ng:change="urlCHG()" ng:disabled="true" />
+			<span class="input-group-btn">
+				<button class="btn btn-danger" type="button" ng:click="url = null;post = null"><%= icon 'remove-sign' %></button>
+			</span>
+
+		</div>
+
+	</div>
+	<!-- <div class="list-group-item" ng:if="post.resource.key"> -->
+		
+		<!-- YouTube.com =================================== -->
+		<!-- =============================================== -->
+			<!-- <div class="list-group"> -->
+
+				<div class="list-group-item" ng:if="post.resource.key && post.resource.key == 'youtube'">
+
+					<div class="form-group">
+
+						<label>Title</label>
+						<input type="text" class="form-control" placeholder="Enter Title" ng:model="post.title" />
+
+					</div>
+
+					<div class="form-group">
+
+						<label>Category</label>
+						<select class="form-control" ng:model="post.category" ng:options="item as item.name for item in categories" ng:change="getSections(post.category)">
+							<option value="">Select a category...</option>
+						</select>
+
+					</div>
+
+					<div class="form-group" ng:show="post.category">
+
+						<label>Section</label>
+						<select class="form-control" ng:model="post.section" ng:options="item as item.name for item in sections">
+							<option value="">Select a section...</option>
+						</select>
+
+					</div>
+
+				</div>
+
+				<div class="list-group-item" ng:if="post.resource.key && post.resource.key == 'youtube'">
+
+					<youtube post="post"></youtube>
+
+				</div>
+
+				<div class="list-group-item" align="center" ng:if="post.resource.key && post.resource.key == 'youtube'">
+
+						<button class="btn btn-default" ng:click="post.player.pauseVideo(); post.player.seekTo(post.player.B.currentTime-(5/30),true);">
+							<%= icon 'fast-backward' %>
+						</button>
+						<button class="btn btn-default" ng:click="post.player.pauseVideo(); post.player.seekTo(post.player.B.currentTime-(1/30),true);">
+							<%= icon 'backward' %>
+						</button>
+						<button class="btn btn-default" ng:click="post.player.playVideo()" ng:if="post.player.B.playerState != 1">
+							<%= icon 'play' %>
+						</button>
+						<button class="btn btn-default" ng:click="post.player.pauseVideo()" ng:if="post.player.B.playerState == 1">
+							<%= icon 'pause' %>
+						</button>
+						<button class="btn btn-default" ng:click="post.player.pauseVideo(); post.player.seekTo(post.player.B.currentTime+(1/30),true);">
+							<%= icon 'forward' %>
+						</button>
+						<button class="btn btn-default" ng:click="post.player.pauseVideo(); post.player.seekTo(post.player.B.currentTime+(5/30),true);">
+							<%= icon 'fast-forward' %>
+						</button>
+
+				</div>
+
+				<div class="list-group-item" ng:if="post.resource.key && post.resource.key == 'youtube'">
+
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng:disabled="false" ng:model="post.sound"> Sound
+						</label>
+					</div>
+
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng:disabled="false" ng:change="post.loopCHG()" ng:model="post.loop"> Loop
+						</label>
+					</div>
+
+					<div ng:if="post.loop">
+
+						<form class="form-inline">
+
+							<div class="form-group">
+								<label>Start Time:</label>
+								<duration ng:model="post.start_time"></duration>
+							</div>
+
+							&nbsp;&nbsp;&nbsp;&nbsp;
+
+							<div class="form-group">
+								<label>Duration:</label>
+								<input type="number" min="0" class="form-control" ng:model="post.loop_duration" placeholder="SS" select />
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+
+				<!-- <div class="list-group-item">{{post.player.B.playerState}}</div> -->
+
+			<!-- </div> -->
+
+			<div class="list-group-item" ng:if="post.resource.key && post.resource.key == 'youtube'">
+
+				<button class="btn btn-success" ng:click="savePost(post)">Save</button>
+
+			</div>
+		<!-- =============================================== -->
+		<!-- =============================================== -->
+
+	<!-- </div> -->
+
+</div>

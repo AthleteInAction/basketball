@@ -1,0 +1,46 @@
+<div class="list-group">
+
+	<div class="list-group-item active">
+		
+		<h4 class="list-group-item-heading">{{post.title}}</h4>
+
+	</div>
+
+	<div class="list-group-item">
+		
+		<div class="embed-responsive embed-responsive-16by9">
+			<div id="thisone"></div>
+		</div>
+
+		<div class="loop-controls" ng:if="post.loop">
+			<div class="percent" style="width: {{((player.B.currentTime-post.start_time)/post.loop_duration)*100}}%;"></div>
+		</div>
+
+	</div>
+
+	<div class="list-group-item">
+		
+		<div align="center">
+			<button class="btn btn-default" ng:click="player.pauseVideo(); player.seekTo(player.B.currentTime-(5/30),true);">
+				<%= icon 'fast-backward' %>
+			</button>
+			<button class="btn btn-default" ng:click="player.pauseVideo(); player.seekTo(player.B.currentTime-(1/30),true);">
+				<%= icon 'backward' %>
+			</button>
+			<button class="btn btn-default" ng:click="player.playVideo()" ng:if="player.B.playerState != 1">
+				<%= icon 'play' %>
+			</button>
+			<button class="btn btn-default" ng:click="player.pauseVideo()" ng:if="player.B.playerState == 1">
+				<%= icon 'pause' %>
+			</button>
+			<button class="btn btn-default" ng:click="player.pauseVideo(); player.seekTo(player.B.currentTime+(1/30),true);">
+				<%= icon 'forward' %>
+			</button>
+			<button class="btn btn-default" ng:click="player.pauseVideo(); player.seekTo(player.B.currentTime+(5/30),true);">
+				<%= icon 'fast-forward' %>
+			</button>
+		</div>
+
+	</div>
+
+</div>

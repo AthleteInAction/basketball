@@ -1,0 +1,167 @@
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// APPLICATION !!!!!!! APPLICATION !!!!!!! APPLICATION !!!!!!! APPLICATION !!!!!!! APPLICATION !!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+App.controller('Ctrl',['$scope','API','$window','$uibModal',
+	function($scope,API,$window,$uibModal){
+
+		Parse.initialize('9nA9rm59xKqjCNfT4LCPgJMexuDdVKP6vxbVIm3F','Y81xi2DbP0ut8QGvcTSj6Oea5eYVS5VvbjKcytEn');
+
+		var scope = $scope;
+
+		scope.youtube_ready = false;
+
+		scope.timezone = jstz.determine();
+
+		scope.loaded = true;
+
+		scope.date = new Date();
+
+		JP('CTRL');
+
+		scope.API = API;
+
+		scope.moment = function(string,format){
+			return moment.tz(string,scope.timezone.name());
+		};
+
+		scope.zone = function(t){
+			return zone(t);
+		};
+
+		scope.times = function(n){
+			return new Array(parseInt(n));
+		};
+
+		scope.getPosts = function(){
+
+			var P = Parse.Object.extend('Posts');
+			var query = new Parse.Query(P);
+			query.include('resource');
+			query.include('category');
+			query.include('section');
+			query.find({
+			  success: function(results){
+			    
+			    scope.posts = results.map(function(item){
+
+			    	var resource = new Resource(item.get('resource'));
+			    	var post = new Post(item);
+			    	var category = new Category(item.get('category'));
+			    	var section = new Section(item.get('section'));
+			    	JP(category);
+
+			    	post.resource = resource;
+			    	post.category = category;
+			    	post.section = section;
+
+			    	return post;
+
+			    });
+
+			  },
+			  error: function(error) {
+
+			    JP("Error: " + error.code + " " + error.message);
+
+			  }
+			});
+
+		}
+		scope.getPosts();
+
+		$scope.open = function(post){
+
+		    var modalInstance = $uibModal.open({
+		      animation: true,
+		      templateUrl: '/angularjs/templates/post-player-modal.html',
+		      controller: PostPlayerModalCTRL,
+		      size: 'lg',
+		      resolve: {
+		        post: post
+		      }
+		    });
+
+		    modalInstance.result.then(function (selectedItem) {
+		      $scope.selected = selectedItem;
+		    }, function () {
+		      $log.info('Modal dismissed at: ' + new Date());
+		    });
+		  };
+
+		// =========================================================
+		// =========================================================
+
+		$window.onYouTubeIframeAPIReady = function(){
+
+		   JP('Youtube API is ready');
+		   var view = angular.element($('#yield')).scope();
+		   view.$apply(function(){ view.youtube_ready = true; });
+
+		};
+
+	}
+]);
+
+var Category = function(object){
+
+	this.object = object;
+	this.id = object.id;
+	this.name = object.get('name');
+	this.sections = [];
+
+	this.getSections = function(){
+
+		var t = this;
+
+		JP('GET SECTIONS: '+t.name);
+
+		var Sections = Parse.Object.extend('Sections');
+		var query = new Parse.Query(Sections);
+		query.equalTo('category',this.object);
+		query.find({
+		  success: function(results){
+		    
+		    t.sections = results.map(function(item){
+
+		      return new Section(item);
+
+		    });
+
+		  },
+		  error: function(error) {
+
+		    JP("Error: " + error.code + " " + error.message);
+
+		  }
+		});
+
+	};
+
+};
+var Section = function(object){
+
+	this.object = object;
+	this.id = object.id;
+	this.name = object.get('name');
+
+};
+var Post = function(object){
+
+	this.object = object;
+	this.id = object.id;
+	this.resource = null;
+	this.title = object.get('title');
+	this.loop = object.get('loop');
+	this.loop_duration = object.get('loop_duration');
+	this.sound = object.get('sound');
+	this.start_time = object.get('start_time');
+
+};
+var Resource = function(object){
+
+	this.object = object;
+	this.id = object.id;
+	this.key = object.get('key');
+	this.url = object.get('url');
+
+};

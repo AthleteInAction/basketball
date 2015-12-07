@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= TITLE %></title>
+	<%= stylesheet_link_tag    'splash', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'splash', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body ng:controller="Ctrl">
+	
+	<div class="container" ng:show="loaded">
+
+		<% flash.each do |type,message| %>
+		<alert type="<%= type %>"><%= message %></alert>
+		<% end %>
+
+		<%= yield %>
+
+	</div>
+
+</body>
+</html>

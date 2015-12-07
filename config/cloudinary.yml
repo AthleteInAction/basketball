@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: wambl
+  api_key: '934675884267723'
+  api_secret: AUuvgMsZAPd-0u1JlXN0vBcokuU
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: wambl
+  api_key: '934675884267723'
+  api_secret: AUuvgMsZAPd-0u1JlXN0vBcokuU
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: wambl
+  api_key: '934675884267723'
+  api_secret: AUuvgMsZAPd-0u1JlXN0vBcokuU
+  enhance_image_tag: true
+  static_image_support: false

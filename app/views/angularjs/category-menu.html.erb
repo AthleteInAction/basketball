@@ -1,0 +1,16 @@
+<div class="list-group category-menu" ng:repeat="category in categories">
+	
+	<div class="list-group-item active">
+		{{category.name}}
+	</div>
+	<div class="list-group-item" ng:repeat="section in category.sections">
+
+		<div class="checkbox">
+			<label>
+				<input type="checkbox"> {{section.name}}
+			</label>
+		</div>
+
+	</div>
+
+</div>

@@ -1,0 +1,1 @@
+Parse.setApplicationId('9nA9rm59xKqjCNfT4LCPgJMexuDdVKP6vxbVIm3F',clientKey: 'I7wfy8p5iwCfWmEm9Qby6fQp8jYyQJKHqn8bvhOA')

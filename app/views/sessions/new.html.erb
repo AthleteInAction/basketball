@@ -1,0 +1,18 @@
+<div class="col-md-4"></div>
+
+<div class="col-md-4">
+
+	<%= form_tag login_path,method: 'post',class: 'form-signin' do %>
+
+		<div align="center"><h2><%= image_tag 'icon-ram@3x.png' %></h2></div>
+
+		<input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+		<input type="password" name="password" class="form-control" placeholder="Password" required>
+
+		<button class="btn btn-default FULL" type="submit">Log In</button>
+
+	<% end %>
+
+</div>
+
+<div class="col-md-4"></div>

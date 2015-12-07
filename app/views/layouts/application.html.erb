@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= TITLE %></title>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body ng:controller="Ctrl">
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+
+			<div class="navbar-header">
+				<div class="container-fluid">
+					<%= link_to dashboard_path,class: 'navbar-brand' do %>
+						<%= image_tag 'icon-ram@3x.png',height: 20 %>
+					<% end %>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+			</div>
+
+			<div class="collapse navbar-collapse" id="navbar">
+				<ul class="nav navbar-nav">
+					<li><a href="#/mystuff">My Stuff</a></li>
+					<li><a href="#/myteam">WG</a></li>
+					<li><a href="#/users">Users</a></li>
+					<li><a href="#/teams">Teams</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to '/' do %><%= current_user['email'] %><% end %></li>
+					<li><%= link_to logout_path do %><%= icon 'log-out' %><% end %></li>
+				</ul>
+			</div>
+			
+		</div>
+	</nav>
+
+	<div class="container" ng:show="loaded">
+
+		<% flash.each do |type,message| %>
+		<alert type="<%= type %>"><%= message %></alert>
+		<% end %>
+
+		<%= yield %>
+
+	</div>
+
+</body>
+</html>

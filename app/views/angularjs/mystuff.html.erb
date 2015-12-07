@@ -1,0 +1,28 @@
+<div class="row">
+
+	<div class="col-md-3">
+
+		<category-menu></category-menu>
+
+	</div>
+
+	<div class="col-md-9">
+
+		<div class="list-group">
+
+			<div class="list-group-item">
+				
+				<input type="search" class="form-control" placeholder="Search" />
+
+			</div>
+
+			<a href="" class="list-group-item" ng:click="open(post)" ng:repeat="post in posts">
+				<span class="text-primary">{{post.title}}</span>
+				<br><span class="label label-default">{{post.category.name}}</span>&nbsp;<span class="label label-default">{{post.section.name}}</span>
+			</a>
+
+		</div>
+
+	</div>
+
+</div>
