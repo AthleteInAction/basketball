@@ -29,7 +29,7 @@ Rails.application.configure do
   ACCESS = ['end-user','admin']
 
   # Parse
-  # require 'ParseAPI'
+  require 'ParseAPI'
   PARSE = ParseAPI::Rest.new '9nA9rm59xKqjCNfT4LCPgJMexuDdVKP6vxbVIm3F','TbHNhFuL3OeJwwELAbU7WgNMbAAy8RpeFPNc1HRg'
 
 end
