@@ -93,6 +93,7 @@ GEM
     minitest (5.8.3)
     multi_json (1.11.2)
     netrc (0.11.0)
+    pg (0.18.4)
     polyglot (0.3.5)
     puma (2.15.3)
     rack (1.5.5)
@@ -179,6 +180,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  pg
   puma
   rails (= 4.1.4)
   rails3_serve_static_assets!

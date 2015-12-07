@@ -48,7 +48,6 @@ App.controller('Ctrl',['$scope','API','$window','$uibModal',
 			    	var post = new Post(item);
 			    	var category = new Category(item.get('category'));
 			    	var section = new Section(item.get('section'));
-			    	JP(category);
 
 			    	post.resource = resource;
 			    	post.category = category;
