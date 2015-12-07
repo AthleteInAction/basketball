@@ -4,10 +4,10 @@ module ParseAPI
 
 		# Includes
 		#-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:
-		require 'json'
-		require 'net/http'
-		require 'net/https'
-		require 'uri'
+		# require 'json'
+		# require 'net/http'
+		# require 'net/https'
+		# require 'uri'
 		#-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:
 
 		# Set Infrastructure
