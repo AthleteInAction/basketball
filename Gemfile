@@ -46,7 +46,7 @@ gem 'fileutils'
 
 group :production,:staging do
 
-	gem 'pg'
+	# gem 'pg'
 
 	gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
 	gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
@@ -60,7 +60,7 @@ end
 # gem 'mysql2'
 group :development do
 
-	gem 'sqlite3'
+	# gem 'sqlite3'
 
 end
 # gem 'parse-ruby-client', git: 'https://github.com/adelevie/parse-ruby-client.git'
